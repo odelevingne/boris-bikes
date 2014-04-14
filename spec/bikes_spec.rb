@@ -12,4 +12,11 @@ describe "Bikes" do
 		bikes.break
 		expect(bikes).to be_broken
 	end
+
+	it "should be able to fix if broken" do
+		bikes = Bikes.new
+		bikes.break
+		bikes.fix
+		expect(bikes).not_to be_broken
+	end
 end
