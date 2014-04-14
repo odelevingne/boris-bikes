@@ -26,4 +26,16 @@ describe DockingStation do
 		expect(station).to be_full
 	end
 
+	it "should not accept a bike if it's full" do
+		bike = double :bike
+		station = DockingStation.new(:capacity => 20)
+		fill_station(station)
+		expect(lambda { station.dock(bike) }).to raise_error(RuntimeError)
+	end
+
+	def fill_station(station)
+		bike = double :bike
+		20.times { station.dock(bike) }
+	end
 end
+
